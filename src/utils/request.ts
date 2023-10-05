@@ -29,7 +29,6 @@ function refreshToken () {
 
 // 请求拦截器
 request.interceptors.request.use(function (config) {
-  console.log('接口请求进来了', config)
   // 改写config配置信息来实现业务功能的统一处理
   const { user } = store.state
   if (user && user.access_token) {
@@ -45,7 +44,6 @@ let isRefreshing = false // 控制刷新 token 的状态k
 let requests:any[] = [] // 存储刷新token期间401的请求
 request.interceptors.response.use(function (response) {
   // 2xx 都会进入这里
-  console.log('请求响应成功 ==> ', response)
   return response
 }, async function (error) {
   // 超出2xx都会进入这里
